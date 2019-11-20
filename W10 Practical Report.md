@@ -46,23 +46,63 @@ The greater the number of repetitions used the slower the program shall run. So 
 
 The Experiments shall generate CSV files of all the data generated. Since it is known that `System.nanoTime()` does not give consistent results. The focus shall be on extrapolating the general trends in the graphs.
 
-To generate the graphs python; `pandas` and `matplotlib` shall be used. The python code used to generate the results can be found in the result folder.
+To generate the graphs python; `pandas` and `matplotlib` shall be used. The python code used to generate the results can be found in the result folder. It was found CS school system do not have `pandas` installed.
 
 Since `System.nanoTime()` sporadic nature as explained before to ensure that an overlap has definitely occurred. It is check the the following 20 values past one too have overlapped. Ensuring that over lap is not due to random spike in time taken.
 
 ## Testing
 
-To ensure the proper functionality of the sorting algorithms. `JUnit` was used to ensure they work. To run the tests please run the command in terminal:
+To run the program press run:
 
 ```bash
 bash run.sh
 ```
 
+To ensure the proper functionality of the sorting algorithms. `JUnit` was used to ensure they work. To run the tests please run the command in terminal:
+
+```bash
+bash run_tests.sh
+```
+
 ## Evaluation of Results
+
+### Average vs Lower Bound / Effect of Sorted Array
+
+![](data_generated\Merge Sort (Average).PNG)
+
+![Merge Sort (Lower Bound)](data_generated\Merge Sort (Lower Bound).PNG)
+
+![](data_generated\Selection Sort (Average).PNG)
+
+![Selection Sort (Lower Bound)](data_generated\Selection Sort (Lower Bound).PNG)
+
+As can be seen above the when using average instead of the lower bound time the curve generated are much more sporadic in nature and lack smoothness, where are using lower bounds curve tend to be smoother. Also as can be seen above both sorting algorithms run at same speed regardless of whether the array is sorted, random or anti-sorted. They all fall upon same gradient and tend to infinity at the same rate.
+
+### Merge Sort vs Selection Sort
+
+![](data_generated\Sorting Anti Sorted Array (Lower Bound).PNG)
+
+![Sorting Randomly Generated Array (Lower Bound)](data_generated\Sorting Randomly Generated Array (Lower Bound).PNG)
+
+![Sorting Sorted Arrays (Lower Bound)](data_generated\Sorting Sorted Arrays (Lower Bound).PNG)
+
+As can be seen Selection sort is initial outperforms merge so then before 100 merge sort being to outperform selection sort. 
+
+The data used to create all these graph can be found in the `data_generated` folder.
+
+In the final code submitted lower bound is used but if you wish to use average the code has been commented out.
+
+### Overtake
+
+###### Example Selection vs Merge with Average
+
+![](data_generated\Sorted Array (Average).PNG)
+
+As can be seen due to the sporadic nature the overlap will happen at a much later point than using lower bound values. This is due to sporadic nature of get nature using time `system.nanoTime()` if lower bound is used instead. A more accurate time can be obtained.
 
 ## Conclusion
 
-From repeated testing of program it was found the Merge Sort over takes Selection Sort for arrays regardless of how sorted they are in the range of array length from 250-300.
+From repeated testing of program it was found the Merge Sort over takes Selection Sort for arrays regardless of how sorted they are in the range of array length from 80 to 100.
 
 As could be seen from graphs. The type of array (e.g. sorted, random, anti-sorted) made negligible on the trend which was discovered for both sorting algorithms. This  can be explained as regardless of the values of the array the comparisons need to be made in order to determine if the array is sorted.  
 

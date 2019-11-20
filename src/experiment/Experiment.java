@@ -70,7 +70,7 @@ public class Experiment {
   * @param array the array being sorted
   */
   private long execute(int[] array) {
-    long average = 0;
+    // long average = 0;
     long minimum  = - 1;
     for (int i = 0; i < repetitions; i++) {
       long startTime = System.nanoTime();
@@ -81,6 +81,7 @@ public class Experiment {
       // if (i > 0) {
       //   average /= 2;
       // }
+      //finds the minimum time taken to sort
       if (minimum == - 1) {
         minimum = endTime - startTime;
       }
@@ -88,6 +89,7 @@ public class Experiment {
         minimum = endTime - startTime;
       }
     }
+    // return average;
     return minimum;
   }
 
